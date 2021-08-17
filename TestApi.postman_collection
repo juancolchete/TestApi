@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "699833f0-a715-447f-9601-7a193b88aa06",
+		"name": "Teste de API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateField",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "flag",
+						"value": "Postman",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"field\": \"teste\",\r\n    \"value\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlBase}}/createField",
+					"host": [
+						"{{urlBase}}"
+					],
+					"path": [
+						"createField"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete field",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"field\": \"counter\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlBase}}/deleteField",
+					"host": [
+						"{{urlBase}}"
+					],
+					"path": [
+						"deleteField"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to a field",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlBase}}/add?field=counter&value=0",
+					"host": [
+						"{{urlBase}}"
+					],
+					"path": [
+						"add"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "counter"
+						},
+						{
+							"key": "value",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sub to a field",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlBase}}/sub?field=counter&value=1",
+					"host": [
+						"{{urlBase}}"
+					],
+					"path": [
+						"sub"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "counter"
+						},
+						{
+							"key": "value",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "append",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"field\": \"teste\",\r\n    \"value\": {\"ola\": \"teste\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlBase}}/append",
+					"host": [
+						"{{urlBase}}"
+					],
+					"path": [
+						"append"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JSON values",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlBase}}",
+					"host": [
+						"{{urlBase}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlBase",
+			"value": "urlBase"
+		}
+	]
+}
