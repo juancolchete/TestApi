@@ -1,13 +1,15 @@
 from flask import abort
 import json
+import config
+config = config.config()
 class dataOperator:
     def readJSON(self):
-        with open("data.json", "r") as jsonFile:
+        with open(config.pathJSON, "r") as jsonFile:
             data = json.load(jsonFile)
             return data
 
     def writeJSON(self,field,value):
-        with open("data.json", "r+") as jsonFile:
+        with open(config.pathJSON, "r+") as jsonFile:
             data = json.load(jsonFile)
             data[field] = value
             jsonFile.seek(0)
@@ -17,7 +19,7 @@ class dataOperator:
     def appendJSON(self,reponseBody):
         if(reponseBody is None):
             abort(400,"The body cannot be null")
-        with open("data.json", "r+") as jsonFile:
+        with open(config.pathJSON, "r+") as jsonFile:
             data = json.load(jsonFile)
             if(reponseBody["field"] in data and "value" in reponseBody.keys()):
                 data[reponseBody["field"]].append(reponseBody["value"])
@@ -30,7 +32,7 @@ class dataOperator:
     def deleteFieldJSON(self, reponseBody):
         if("field" not in reponseBody.keys()):
             abort(400,"The value of parameter field cannot be null")
-        with open("data.json", "r+") as jsonFile:
+        with open(config.pathJSON, "r+") as jsonFile:
             data = json.load(jsonFile)
             if(reponseBody["field"] in data):
                 del data[reponseBody["field"]]
@@ -49,7 +51,7 @@ class dataOperator:
             value = ""
         else:
             value = reponseBody["value"]
-        with open("data.json", "r+") as jsonFile:
+        with open(config.pathJSON, "r+") as jsonFile:
             data = json.load(jsonFile)
             data[reponseBody["field"]] = value
             jsonFile.seek(0)
